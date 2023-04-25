@@ -1,0 +1,11 @@
+export class UserData{
+    id?:number;
+    username?:string;
+    password?:string;
+    wallet_id?:number;
+    email?:string;
+}
+export class loginData {
+    username:string;
+    password:string;
+}
