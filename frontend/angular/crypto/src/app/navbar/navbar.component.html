@@ -8,9 +8,9 @@
         <a href="#">About Us</a>
       </div>
       <div class="navbar-right">
-        <button class="btn-login" *ngIf="!isLoggedIn" routerLink="/login">Log In</button>
-        <button class="btn-register" *ngIf="!isLoggedIn" routerLink="/register">Register</button>
-        <span class="welcome" *ngIf="isLoggedIn">Welcome!</span>
+        <button class="btn-login" *ngIf="!loggedIn" routerLink="/login">Log In</button>
+        <button class="btn-register" *ngIf="!loggedIn" routerLink="/register">Register</button>
+        <span class="welcome" *ngIf="loggedIn">Welcome!</span>
       </div>
     </div>
   </div>

@@ -7,15 +7,5 @@ import { UserService } from '../services/authenication.service.spec';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  isLoggedIn = false;
-  nickname: string | null = null;
-
-  constructor(private userService: UserService) {}
-
-  ngOnInit() {
-    this.userService.user.subscribe((user: { nickname: string | null; }) => {
-      this.isLoggedIn = !!user;
-      this.nickname = user ? user.nickname : null;
-    });
-  }
+  loggedIn:boolean=false;
 }
