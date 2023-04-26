@@ -1,0 +1,149 @@
+* {
+    font-family: 'Merriweather', serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: "Prompt", sans-serif;
+}
+
+#bg{
+    background-image: url(background.jpg);
+    margin: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: aliceblue;
+
+}
+
+
+#logingbutton{
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 9px 20px;
+}
+
+#logingbutton{
+    background-color: orange;
+    border: 0;
+    border-radius: 2rem;
+    font-size: 1.5em;
+}
+.bg-content {
+    color: aliceblue;
+    text-align: center;
+    padding: 13rem;
+    justify-content: center;
+    font-family: 'Merriweather', serif;
+    font-family: 'Oswald', sans-serif;
+    font-family: "Prompt", sans-serif;
+}
+
+
+
+
+
+/* Cards section */
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1em;
+}
+
+.card-section {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  border-radius: 40px;
+  margin-top: 50px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 30px;
+  height: 100%;
+}
+
+.card-icon {
+  background-color: #ff8800;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.card-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+    /* security and privacy section */
+
+
+    .security-privacy {
+      background-color: #f5f5f5;
+      padding: 80px 0;
+      border-radius: 20px;
+    }
+    
+    .security-privacy h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+      color: #292929;
+    }
+    
+    .security-privacy h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #292929;
+    }
+    
+    .security-privacy p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+    }
+    
+    .security-privacy img {
+      width: 500px;
+      height: 650px;
+      object-fit: cover;
+      float: right;
+      border-radius: 20px;
+    }
+
+ 
+
+      
+      
