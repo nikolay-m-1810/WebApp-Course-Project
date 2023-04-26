@@ -1,17 +1,18 @@
 import {DB} from "../core/db";
 import {log} from "util";
 import {UserData,loginData} from "./userDataModel";
-
+import * as crypto from "crypto";
+import {login} from "../controllers/userController";
 export class User{
     id?:number;
     username:string;
     password:string;
-    wallet_id?:number;
+    public_address?:string;
     email:string;
-    constructor(username:string, password:string,wallet_id:number, email:string) {
+    constructor(username:string, password:string,wallet_id:string, email:string) {
         this.username = username;
         this.password = password;
-        this.wallet_id = wallet_id;
+        this.public_address = wallet_id;
         this.email = email;
     }
 }
@@ -32,13 +33,28 @@ export class UserModel{
         await this.conn.query("DELETE FROM users WHERE user_id = ?",[id])
     }
     async insertUser(newusr:User){
+        let flag = true;
+        let check, pub:string = "", priv:string = "";
+        while (flag){
+            pub = crypto.randomBytes(8).toString("hex").slice(0,16);
+            priv = crypto.randomBytes(16).toString("hex").slice(0,32);
+            [check] = await this.conn.query("SELECT * FROM wallets WHERE public_address = ? OR private_key = ?",[pub,priv])
+            if(check.length == 0)
+            {
+                flag = false
+            }
+
+        }
+        await this.conn.execute("INSERT INTO wallets (public_address,private_key) VALUE(?,?)",[pub,priv])
         const newusrParams = [
             newusr.username,
             newusr.password,
-            newusr.wallet_id,
+            pub,
             newusr.email
         ]
-        await this.conn.execute("INSERT INTO users (username,password,wallet_id,email) VALUE(?,?,?,?)",newusrParams);
+        await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
+
+
     }
     async updateUser(id:number, user:UserData){
         const userDataInput = Object.entries(user)
