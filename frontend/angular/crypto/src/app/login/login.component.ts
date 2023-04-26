@@ -8,21 +8,21 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class LoginComponent {
-  loggedIn:boolean=false;
-  username:string='';
-  password:string='';
-  constructor(private http:HttpClient){}
-  onSubmit(){
-    const data = {
-    username:this.username,
-    password:this.password
-    }
-  this.http.post('/api/getUser',{data}).subscribe(
-    (response) => {
-    this.loggedIn=true;
-    console.log("Logged In {{this.username}}")
-  },(error)=>{
-    console.log("Error");
-  });
+  username: string = '';
+  password: string = '';
+
+  constructor(private http: HttpClient) { }
+
+  onSubmit() {
+    // send login data to backend
+    this.http.get('http://localhost:8080/api/login', )
+      .subscribe((data:any) => {
+        // login successful
+        console.log();
+      }, error => {
+        // login failed
+        console.error(error);
+      });
+
   }
 }
