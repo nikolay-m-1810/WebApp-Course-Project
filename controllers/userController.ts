@@ -48,6 +48,7 @@ export const updateUser =  async (req: Request, res: Response)=>{
 }
 export const login = async(req:Request, res:Response) => {
     let loginInfo:loginData = req.body
+    console.log(loginInfo)
     const checkForUser = await new UserModel().login(loginInfo)
     res.send({
         "message": checkForUser
