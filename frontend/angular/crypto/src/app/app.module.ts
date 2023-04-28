@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { TradingComponent } from './trading/trading.component';
 import { NgChartsModule } from 'ng2-charts';
 import { FooterComponent } from './footer/footer.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 
 
@@ -27,6 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     NotfoundComponent,
     TradingComponent,
     FooterComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
