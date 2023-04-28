@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { UserService } from '../services/authenication.service.spec';
 
 @Component({
@@ -7,5 +7,5 @@ import { UserService } from '../services/authenication.service.spec';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  loggedIn:boolean=false;
+  
 }

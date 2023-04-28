@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -11,7 +11,9 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    
+  }
 
   onSubmit() {
     // send login data to backend
