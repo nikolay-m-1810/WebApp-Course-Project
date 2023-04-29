@@ -1,5 +1,7 @@
-import { Component,Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from "@angular/router"
+import { AuthService } from '../services/authenication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +9,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
+export class LoginComponent  {
   username: string = '';
   password: string = '';
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,private authService:AuthService,private router:Router) { 
     
   }
 
   onSubmit() {
     // send login data to backend
     this.http.post('http://localhost:8080/api/login',{username:this.username, password:this.password},)
-      .subscribe((data:any) => {
+      .subscribe((response:any) => {
+        if(response.message==='User exists') {
         // login successful
-        console.log();
+          console.log("mai stana");
+          this.authService.login(this.username,this.password);
+          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          this.router.navigate(['/']);
+        }
+        else {
+          alert(response.message);
+        }
       }, error => {
         // login failed
         console.error(error);
@@ -28,3 +38,4 @@ export class LoginComponent {
 
   }
 }
+

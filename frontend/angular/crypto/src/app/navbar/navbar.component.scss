@@ -38,7 +38,8 @@ nav {
   }
   
   .btn-login,
-  .btn-register {
+  .btn-register,
+  .btn-logout {
     background-color: orange;
     border: none;
     border-radius: 2rem;
@@ -51,11 +52,15 @@ nav {
   }
   
   .btn-login:hover,
-  .btn-register:hover {
+  .btn-register:hover,
+  .btn-logout:hover {
     background-color: #555;
   }
   
   .welcome {
     margin-left: 1rem;
+  }
+  span a:hover {
+    font-weight: bolder;
   }
   

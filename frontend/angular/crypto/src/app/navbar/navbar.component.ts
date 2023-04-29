@@ -1,5 +1,5 @@
-import { Component,Input } from '@angular/core';
-import { UserService } from '../services/authenication.service.spec';
+import { Component,OnInit } from '@angular/core';
+import { AuthService } from '../services/authenication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,5 +7,17 @@ import { UserService } from '../services/authenication.service.spec';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  
+  currentUser:string | null = null;
+
+  constructor(public authService: AuthService) {
+    // Subscribe to the currentUser observable in the AuthService
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
+  }
+
+
+  logout(): void {
+    this.authService.logout();
+  }
 }
