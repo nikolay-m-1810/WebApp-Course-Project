@@ -1,7 +1,6 @@
-import { DecimalPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -18,6 +17,14 @@ export class HomepageComponent {
   constructor(private http:HttpClient){}
 
   ngOnInit() {
+    this.getPrice();
+
+    interval(5000).subscribe(() => {
+      this.getPrice();
+    });
+  }
+
+    getPrice(){
     this.http.get<any>(`http://localhost:8080/api/price/${this.btc}`).subscribe(
       data => {
         const value_usdt = data[0][0].value_usdt;
@@ -45,7 +52,8 @@ export class HomepageComponent {
         console.log(error);
       }
     );
+    }
   }
-}
+
 
 
