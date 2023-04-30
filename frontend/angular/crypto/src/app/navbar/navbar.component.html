@@ -10,7 +10,7 @@
       <div class="navbar-right">
         <button *ngIf="!currentUser" class="btn-login"  routerLink="/login">Log In</button>
         <button *ngIf="!currentUser" class="btn-register" routerLink="/registration">Register</button>
-        <span *ngIf="authService.currentUser$ | async as currentUser" class="welcome" >Welcome: <a routerLink="/profile">{{currentUser}}</a></span>
+        <span *ngIf="currentUser" class="welcome" >Welcome: <a routerLink="/profile">{{currentUser}}</a></span>
         <button class="btn-logout" (click)="logout()" *ngIf="currentUser">Logout</button>
       </div>
     </div>

@@ -14,9 +14,9 @@ export const getUser = async (req:Request, res:Response)=>{
     // first is ?id=10
     // second is 10
     //both are used depending on hat you need to do
-    const usrid = parseInt(req.params.id);
+    const username =req.params.username;
     const usrmodel = new UserModel();
-    const user = await usrmodel.getUser(usrid)
+    const user = await usrmodel.getUser(username)
     res.send(user)
 }
 export const makeUser = async (req:Request, res:Response) => {

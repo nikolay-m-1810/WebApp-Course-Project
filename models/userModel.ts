@@ -9,11 +9,12 @@ export class User{
     password:string;
     public_address?:string;
     email:string;
-    constructor(username:string, password:string,wallet_id:string, email:string) {
+    constructor(username:string, password:string,wallet_id:string, email:string,public_address:string) {
         this.username = username;
         this.password = password;
         this.public_address = wallet_id;
         this.email = email;
+        this.public_address=public_address;
     }
 }
 export class UserModel{
@@ -25,8 +26,8 @@ export class UserModel{
         const [rows] = await this.conn.query("SELECT * FROM users");
         return rows;
     }
-    async getUser(id:number){
-        const [row] = await this.conn.query("SELECT * FROM users WHERE user_id = ?", [id])
+    async getUser(username:string){
+        const [row] = await this.conn.query("SELECT * FROM users WHERE username = ?", [username])
         return row
     }
     async deleteUser(id:number){
@@ -35,8 +36,15 @@ export class UserModel{
     async insertUser(newusr:User){
         let flag = true;
         let check, pub:string = "", priv:string = "";
+        pub = crypto.randomBytes(8).toString("hex").slice(0,16);
+        const newusrParams = [
+            newusr.username,
+            newusr.password,
+            pub,
+            newusr.email
+        ]
+        await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
         while (flag){
-            pub = crypto.randomBytes(8).toString("hex").slice(0,16);
             priv = crypto.randomBytes(16).toString("hex").slice(0,32);
             [check] = await this.conn.query("SELECT * FROM wallets WHERE public_address = ? OR private_key = ?",[pub,priv])
             if(check.length == 0)
@@ -46,13 +54,7 @@ export class UserModel{
 
         }
         await this.conn.execute("INSERT INTO wallets (public_address,private_key) VALUE(?,?)",[pub,priv])
-        const newusrParams = [
-            newusr.username,
-            newusr.password,
-            pub,
-            newusr.email
-        ]
-        await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
+        //await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
 
 
     }

@@ -23,7 +23,7 @@ export class WalletModel extends UserModel{
         await this.con.execute("INSERT INTO wallets (public_address,private_key) VALUE(?,?)",[pub,priv])
     }
     async getWalletId(){
-        const [id] = await this.con.execute("SELECT usr_id FROM Wallets WHERE ")
+        const [id] = await this.con.execute("SELECT usr_id FROM wallets WHERE ")
     }
 }
 const pedal = new WalletModel();

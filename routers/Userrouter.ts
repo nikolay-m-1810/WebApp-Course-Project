@@ -7,7 +7,7 @@ export const userRouter = Router();
 
 userRouter.get("/",welcomeMsg);
 
-userRouter.get("/user/:id", getUser)
+userRouter.get("/user/:username", getUser)
 userRouter.post("/user/register",makeUser)
 userRouter.delete("/user/:id",delUser)
 userRouter.put("/user/:id",updateUser)
