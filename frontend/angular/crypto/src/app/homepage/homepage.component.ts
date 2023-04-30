@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 
+import { interval } from 'rxjs';
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',

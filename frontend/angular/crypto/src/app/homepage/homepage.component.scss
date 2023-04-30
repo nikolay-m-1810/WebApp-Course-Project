@@ -45,12 +45,14 @@
 /* Cards section */
 
 .section-title {
+  
   display: flex;
   justify-content: center;
   padding-bottom: 1em;
 }
 
 .card-section {
+  margin: 0;
   background-color: #f8f9fa;
   padding: 60px 0;
   border-radius: 40px;
@@ -100,7 +102,28 @@
   }
 }
 
+/*kiopek*/
 
+
+.stats-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.stats-stat {
+  text-align: center;
+}
+
+.stats-number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stats-description {
+  font-size: 14px;
+  color: #666;
+}
 
 
 
@@ -144,6 +167,48 @@
     }
 
  
+//Prices
 
-      
-      
+.call-to-action {
+
+  color: #fff;
+  padding-top: 3rem;
+  text-align: left;
+}
+
+.call-to-action h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #292929;
+}
+
+.call-to-action p {
+  font-size: 1.5em;
+  line-height: 1.8;
+  color: #555;
+}
+
+.cta-button {
+  margin: 0;
+  background-color: #F7931A;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  padding: 20px 40px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+
+.cta-button:hover {
+  background-color: #D67F14;
+  cursor: pointer;
+}
+
+
+hr {
+  size: 5px;
+  color: black;
+
+}

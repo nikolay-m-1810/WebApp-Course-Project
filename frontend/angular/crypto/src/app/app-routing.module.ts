@@ -12,8 +12,9 @@ const routes: Routes = [
   {path: "login",component: LoginComponent},
   {path: "registration", component: RegistrationComponent},
   {path: "profile", component: ProfilePageComponent},
+  {path: "trading", component: TradingComponent},
   {path: "**", component: NotfoundComponent},
-  {path: "trading", component: TradingComponent}
+  
   
 ];
 
