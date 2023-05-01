@@ -36,16 +36,10 @@ export class UserModel{
     async insertUser(newusr:User){
         let flag = true;
         let check, pub:string = "", priv:string = "";
-        pub = crypto.randomBytes(8).toString("hex").slice(0,16);
-        const newusrParams = [
-            newusr.username,
-            newusr.password,
-            pub,
-            newusr.email
-        ]
-        await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
+        
         while (flag){
             priv = crypto.randomBytes(16).toString("hex").slice(0,32);
+            pub = crypto.randomBytes(8).toString("hex").slice(0,16);
             [check] = await this.conn.query("SELECT * FROM wallets WHERE public_address = ? OR private_key = ?",[pub,priv])
             if(check.length == 0)
             {
@@ -53,8 +47,14 @@ export class UserModel{
             }
 
         }
+        const newusrParams = [
+            newusr.username,
+            newusr.password,
+            pub,
+            newusr.email
+        ]
         await this.conn.execute("INSERT INTO wallets (public_address,private_key) VALUE(?,?)",[pub,priv])
-        //await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
+        await this.conn.execute("INSERT INTO users (username,password,public_address,email) VALUE(?,?,?,?)",newusrParams);
 
 
     }
