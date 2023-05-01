@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component,OnInit } from '@angular/core';
 
 import { interval } from 'rxjs';
+import { AuthService } from '../services/authenication.service';
 
 @Component({
   selector: 'app-homepage',
@@ -15,7 +16,12 @@ export class HomepageComponent {
   price_btc:string = '';
   price_ada:string = '';
   price_eth:string='';
-  constructor(private http:HttpClient){}
+  currentUser:string | null = null;
+  constructor(private http:HttpClient,public authService:AuthService){
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+  });
+}
 
   ngOnInit() {
     this.http.get<any>(`http://localhost:8080/api/price/${this.btc}`).subscribe(
@@ -45,6 +51,7 @@ export class HomepageComponent {
         console.log(error);
       }
     );
+
   }
 }
 
