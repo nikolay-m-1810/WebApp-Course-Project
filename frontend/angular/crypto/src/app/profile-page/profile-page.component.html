@@ -1,4 +1,4 @@
-
+<app-navbar></app-navbar>
 <div class="profile-container">
     <div class="profile-header">
       <h2>Welcome Back, {{username}}!</h2>
@@ -11,7 +11,7 @@
           <p>Balance: </p>
           <p>Address: {{public_address}} </p>
         </div>
-        <button class="send-button">Send Crypto</button>
+        <button class="send-button" routerLink="/trading">Send Crypto</button>
       </div>
       <div class="trade-container">
         <h3>Trade History</h3>
