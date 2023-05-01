@@ -12,9 +12,10 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TradingComponent } from './trading/trading.component';
-import { NgChartsModule } from 'ng2-charts';
 import { FooterComponent } from './footer/footer.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { NgChartsModule } from 'ng2-charts';
+import 'chart.js';
 
 
 
