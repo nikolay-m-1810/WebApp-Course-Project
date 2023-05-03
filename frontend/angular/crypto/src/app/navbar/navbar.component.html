@@ -2,9 +2,9 @@
   <div class="container">
     <div class="navbar">
       <div class="navbar-left">
-        <a routerLink="/"><img class="logo" src="/frontend/angular/crypto/src/assets/logo.png" height="64px" width="64px"></a>
+        <a routerLink="/"><img class="logo" src="http://localhost:4200/assets/logo.png" height="64px" width="64px"></a>
         <a href="#">Trade</a>
-        <a href="#">Market</a>
+        <a routerLink="{{authService.isLoggedIn() ? '/trading' : '/login' }}">Market</a>
         <a href="#">About Us</a>
       </div>
       <div class="navbar-right">
