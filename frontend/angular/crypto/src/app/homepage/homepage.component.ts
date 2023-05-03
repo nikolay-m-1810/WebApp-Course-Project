@@ -14,12 +14,9 @@ export interface Crypto{
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit{
-  currentUser:string | null = null;
   cryptos:Crypto[] = []
   constructor(private http:HttpClient,public authService:AuthService){
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-  });
+    
 }
   getCryptos(){
     this.http.get("http://localhost:8080/api/cryptos")

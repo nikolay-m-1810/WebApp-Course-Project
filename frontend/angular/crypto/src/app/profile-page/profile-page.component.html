@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="profile-container">
-    <div class="profile-header">
-      <h2>Welcome Back, {{username}}!</h2>
+    <div  class="profile-header">
+      <h2>Welcome Back, {{ (authService.currentUser$ | async)?.username }}</h2>
       <a href="" (click)="logout()" class="logout-link">Log Out</a>
     </div>
     <div class="profile-body">
@@ -9,7 +9,7 @@
         <h3>Your Wallet</h3>
         <div class="wallet-info">
           <p>Balance: </p>
-          <p>Address: {{public_address}} </p>
+          <p>Address: {{ (authService.currentUser$ | async)?.public_address }} </p>
         </div>
         <button class="send-button" routerLink="/trading">Send Crypto</button>
       </div>

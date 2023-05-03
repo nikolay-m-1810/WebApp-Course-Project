@@ -4,14 +4,14 @@
       <div class="navbar-left">
         <a routerLink="/"><img class="logo" src="https://o.remove.bg/downloads/207ffbbf-9b6f-4f05-a406-210d82738db3/png-transparent-bitcoin-com-cryptocurrency-logo-zazzle-bitcoin-text-trademark-logo-thumbnail-removebg-preview.png" height="64px" width="64px"></a>
         <a href="#">Trade</a>
-        <a href="#" routerLink="{{currentUser ? '/trading' : '/'}}">Market</a>
+        <a href="#">Market</a>
         <a href="#">About Us</a>
       </div>
       <div class="navbar-right">
-        <button *ngIf="!currentUser" class="btn-login"  routerLink="/login">Log In</button>
-        <button *ngIf="!currentUser" class="btn-register" routerLink="/registration">Register</button>
-        <span *ngIf="currentUser" class="welcome" >Welcome: <a routerLink="/profile">{{currentUser}}</a></span>
-        <button class="btn-logout" (click)="logout()" *ngIf="currentUser">Logout</button>
+        <button  class="btn-login" *ngIf="!(authService.currentUser$ | async)"  routerLink="/login">Log In</button>
+        <button *ngIf="!(authService.currentUser$ | async)" class="btn-register" routerLink="/registration">Register</button>
+        <span *ngIf="(authService.currentUser$ | async) as currentUser" class="welcome">Welcome: <a routerLink="/profile">{{ (authService.currentUser$ | async)?.username }}</a></span>
+        <button class="btn-logout" (click)="logout()" *ngIf="(authService.currentUser$ | async) as currentUser">Logout</button>
       </div>
     </div>
   </div>

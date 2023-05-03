@@ -7,24 +7,25 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 
 export class AuthService  {
-  private currentUserSubject: BehaviorSubject<string | null>;
-  public currentUser$: Observable<string | null>;
-  public public_address:string='';
+  private currentUserSubject: BehaviorSubject<{ username: string; public_address: string } | null>;
+  public currentUser$: Observable<{ username: string; public_address: string } | null>;
 
-  constructor(private http:HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<string | null>(localStorage.getItem('currentUser'));
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<{ username: string; public_address: string } | null>(JSON.parse(localStorage.getItem('currentUser')!));
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
 
   public login(username: string, password: string): void {
     // Check the username and password against the database
     // If they match, set the current user in local storage and emit it through the currentUser$ observable
-    localStorage.setItem('currentUser', username);
-    this.currentUserSubject.next(username);
+    localStorage.setItem('currentUser', JSON.stringify({ username: username, public_address: '' }));
+    this.currentUserSubject.next({ username: username, public_address: '' });
     this.http.get<any>('http://localhost:8080/api/user/'+username,).subscribe(response =>{
           if(response){
-            this.public_address=response[0].public_address;
-            console.log(this.public_address);
+            const user = { username: username, public_address: response[0].public_address };
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.currentUserSubject.next(user);
+            console.log(user.public_address)
           }
       });
     }
@@ -39,4 +40,3 @@ export class AuthService  {
   }
 
 }
-

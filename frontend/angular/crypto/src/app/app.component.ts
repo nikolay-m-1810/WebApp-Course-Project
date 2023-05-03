@@ -6,17 +6,9 @@ import { AuthService } from './services/authenication.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'crypto';
-  currentUser: string | null = null;
+  //currentUser: string | null = null;
   constructor(private authService:AuthService){}
 
-
-  ngOnInit() {
-    // set up currentUser subscription
-    this.authService.currentUser$.subscribe(user => {
-      console.log('current user:', user);
-      this.currentUser = user;
-    });
-  }
 }
