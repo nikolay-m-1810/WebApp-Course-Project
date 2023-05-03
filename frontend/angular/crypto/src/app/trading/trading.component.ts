@@ -37,30 +37,30 @@ export class TradingComponent implements OnInit {
     ];
     public lineChartLegend = true;
     public lineChartType = 'line';
-  
+
     private apiEndpoint = 'http://localhost:3000/price';
     private interval$ = interval(1000);
     private data$: Observable<any> | undefined;
-  
+
     constructor(private http: HttpClient) { }
-  
+
     ngOnInit() {
       this.data$ = this.interval$.pipe(
         map(() => this.http.get(this.apiEndpoint))
       );
-  
+
       this.data$.subscribe(data => {
         const price = data.price;
         this.lineChartData[0].data.push(price);
         this.lineChartLabels.push(new Date().toLocaleTimeString());
       });
     }
-  
+
     buy() {
       // TODO: implement buy logic
       console.log('Buy Kiopek Coin');
     }
-  
+
     sell() {
       // TODO: implement sell logic
       console.log('Sell Kiopek Coin');

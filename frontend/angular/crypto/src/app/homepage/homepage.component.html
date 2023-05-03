@@ -51,8 +51,8 @@
             </div>
           </div>
         </section>
-        
-        
+
+
 
         <!--Stats-->
 
@@ -72,7 +72,7 @@
             </div>
           </div>
         </section>
-        
+
 
 
 
@@ -99,9 +99,9 @@
           </div>
           </ul>
         </div>
-        
-  
-      
+
+
+
         <div class="col-12 col-md-6 ">
           <img src="https://plus.unsplash.com/premium_photo-1675277154674-253f48327a9a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80" alt="Security Image">
         </div>
@@ -109,7 +109,9 @@
     </div>
   </section>
 
-
+<ul *ngFor="let crypto of cryptos">
+  <li>{{ crypto.crypto_name }} : {{ crypto.value_usdt }} US</li>
+</ul>
 
 
 
