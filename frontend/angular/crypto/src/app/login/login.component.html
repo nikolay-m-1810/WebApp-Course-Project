@@ -1,13 +1,22 @@
-<form (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input  [(ngModel)]="username" name="username" type="text" class="form-control" id="exampleInputText"  placeholder="Enter username" required>
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<body>
+  <div class="container">
+    <div class="login-form">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()">
+        
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" [(ngModel)]="username" required>
+        
+          <label for="password">Password:</label>
+          <input type="password" name="password" id="password" [(ngModel)]="password" required>
+        
+          <button type="submit">Login</button>
+        
+      </form>
+      <div class="login-form-text">
+        <p>Not registered?</p>
+        <a routerLink="/registration">Create an account</a>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input  [(ngModel)]="password" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-  </div>
-  <h3>Not registered?<a routerLink="/registration">Do it now!</a></h3>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</body>
