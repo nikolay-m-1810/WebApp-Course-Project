@@ -10,4 +10,8 @@ export class PriceModell {
         const price = await this.conn.query("SELECT value_usdt FROM prices WHERE crypto_name=?",[crypto_name]);
         return price;
     }
+    async getCryptos(){
+        const [rows] = await this.conn.query("SELECT * FROM prices");
+        return rows;
+    }
 }

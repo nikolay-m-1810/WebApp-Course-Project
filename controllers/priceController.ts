@@ -7,3 +7,7 @@ export const getPrice = async (req:Request, res:Response)=>{
     const price = await priceModel.getPrice(crypto_name);
     res.send(price);
 }
+export const getCryptos = async (req:Request, res:Response)=>{
+    const cryptos = await new PriceModell().getCryptos()
+    res.send(cryptos);
+}
