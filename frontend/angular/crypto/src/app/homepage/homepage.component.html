@@ -1,15 +1,9 @@
 <app-navbar></app-navbar>
     <div class="container-fluid" class="bg">
         <div class="bg-content">
-<<<<<<< HEAD
-            <h1>Welcome to our kiopek community!</h1>
-            <h3>Where the best traders are.</h3><br>
-            <button id="logingbutton">Get Started</button>
-=======
             <h1>Get ahead in the crypto game.</h1>
             <h3>Trade with our platform.</h3><br>
-            <button class="logingbutton" routerLink="{{currentUser ? '/trading' : '/registration' }}">Get Started</button>
->>>>>>> d0c4467e771a09578ce49ff07a3cdfc5b8ee4e48
+            <button class="logingbutton" routerLink="{{authService.isLoggedIn() ? '/trading' : '/registration' }}">Get Started</button>
         </div>
     </div>
 
@@ -94,11 +88,7 @@
           <div class="call-to-action">
             <h2>Start Trading Today</h2>
             <p>Join our platform and start building your portfolio now.</p>
-<<<<<<< HEAD
-            <button  class="cta-button">Get Started</button>
-=======
-            <button class="cta-button">Get Started</button>
->>>>>>> d0c4467e771a09578ce49ff07a3cdfc5b8ee4e48
+            <button routerLink="{{authService.isLoggedIn() ? '/trading' : '/registration' }}" class="cta-button" >Get Started</button>
           </div>
         </div>
 
