@@ -38,15 +38,15 @@
         </div>
       </div>
 
-      <div class="crypto-buy-sell">
+      <form  class="crypto-buy-sell">
         <h3>Buy/Sell Crypto</h3>
         <div class="crypto-inputs">
           <div class="crypto-input">
             <label for="crypto-type">Crypto Type</label>
-            <select id="crypto-type">
-              <option value="btc">Bitcoin</option>
-              <option value="eth">Ethereum</option>
-              <option value="ltc">Cardano</option>
+            <select [(ngModel)]="crypto" id="crypto-type" name="crypto">
+              <option  value="BTC">Bitcoin</option>
+              <option  value="ETH">Ethereum</option>
+              <option  value="ADA">Cardano</option>
             </select>
           </div>
           <div class="crypto-input">
@@ -67,10 +67,10 @@
           </div>
         </div>
         <div class="crypto-button-container">
-          <button class="buy-button">Buy</button>
+          <button class="buy-button" (click)="buy()">Buy</button>
           <button class="sell-button">Sell</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <ul></ul>

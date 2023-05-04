@@ -12,10 +12,12 @@ import { BaseChartDirective, baseColors } from 'ng2-charts';
   providers: [BaseChartDirective]
 })
 export class TradingComponent implements OnInit {
-
+  crypto:Crypto | null = null;
   ngOnInit(): void {
-
-  
+  }
+  buy(){
+    console.log(this.crypto);
+    this.crypto = crypto;
   }
 
 }
