@@ -16,7 +16,7 @@ export interface Crypto{
 export class HomepageComponent implements OnInit{
   cryptos:Crypto[] = []
   constructor(private http:HttpClient,public authService:AuthService){
-    
+
 }
   getCryptos(){
     this.http.get("http://localhost:8080/api/cryptos")
@@ -24,7 +24,6 @@ export class HomepageComponent implements OnInit{
         this.cryptos = data
         console.log(this.cryptos)
       })
-    //Rado napraih go toz kod na 1 bira i pak e po-dobur ot tvoq -> ne barai
     //Here we get all crypto data from the prices table into an array(called cryptos) and loop though the array to visualize all the current values
   }
   ngOnInit() {

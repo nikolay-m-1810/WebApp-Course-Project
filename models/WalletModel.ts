@@ -26,7 +26,3 @@ export class WalletModel extends UserModel{
         const [id] = await this.con.execute("SELECT usr_id FROM wallets WHERE ")
     }
 }
-const pedal = new WalletModel();
-(async () =>{
-    await pedal.createWallet()
-})()
