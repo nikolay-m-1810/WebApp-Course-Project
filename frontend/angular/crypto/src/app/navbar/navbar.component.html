@@ -5,6 +5,7 @@
         <a routerLink="/"><img class="logo" src="http://localhost:4200/assets/logo.png" height="64px" width="64px"></a>
         <a href="#">Trade</a>
         <a routerLink="{{authService.isLoggedIn() ? '/trading' : '/login' }}">Market</a>
+        <a routerLink="{{authService.isLoggedIn() ? '/deposit' : '/login' }}">Deposit</a>
         <a href="#">About Us</a>
       </div>
       <div class="navbar-right">

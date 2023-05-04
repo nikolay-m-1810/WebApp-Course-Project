@@ -6,6 +6,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { TradingComponent } from './trading/trading.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { DepositComponent } from './deposit/deposit.component';
 
 const routes: Routes = [
   {path: "",component: HomepageComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: "registration", component: RegistrationComponent},
   {path: "profile", component: ProfilePageComponent},
   {path: "trading", component: TradingComponent},
+  {path: "deposit", component: DepositComponent},
   {path: "**", component: NotfoundComponent},
   
   

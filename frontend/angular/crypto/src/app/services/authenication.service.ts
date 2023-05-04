@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +11,12 @@ export class AuthService  {
   private currentUserSubject: BehaviorSubject<{ username: string; public_address: string } | null>;
   public currentUser$: Observable<{ username: string; public_address: string } | null>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
     this.currentUserSubject = new BehaviorSubject<{ username: string; public_address: string } | null>(JSON.parse(localStorage.getItem('currentUser')!));
     this.currentUser$ = this.currentUserSubject.asObservable();
   }
 
-  public login(username: string, password: string): void {
+  public login(username: string): void {
     // Check the username and password against the database
     // If they match, set the current user in local storage and emit it through the currentUser$ observable
     localStorage.setItem('currentUser', JSON.stringify({ username: username, public_address: '' }));
@@ -33,6 +34,7 @@ export class AuthService  {
   public logout(): void {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigate(['/']);
   }
   isLoggedIn(): boolean {
     // check if currentUserSubject has a value

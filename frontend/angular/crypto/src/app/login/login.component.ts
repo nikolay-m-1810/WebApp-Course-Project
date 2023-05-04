@@ -19,13 +19,12 @@ export class LoginComponent  {
 
   onSubmit() {
     // send login data to backend
-    this.http.post('http://localhost:8080/api/login',{username:this.username, password:this.password},{})
+    this.http.post('http://localhost:8080/api/login',{username:this.username, password:this.password})
       .subscribe((response:any) => {
         if(response.message==='User exists') {
         // login successful
           console.log("mai stana");
-          this.authService.login(this.username,this.password);
-          localStorage.setItem('currentUser', JSON.stringify(response.user));
+          this.authService.login(this.username);
           this.router.navigate(['/']);
         }
         else {
