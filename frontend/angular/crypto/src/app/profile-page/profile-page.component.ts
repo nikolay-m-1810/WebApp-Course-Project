@@ -8,11 +8,15 @@ import { Observable } from 'rxjs';
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.scss']
 })
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit {
 
   constructor(public authService:AuthService,private http:HttpClient) {
     
   }
+  ngOnInit(): void {
+    //to implement function to show the balance of the crypto currencies!
+  }
+
   
   
 

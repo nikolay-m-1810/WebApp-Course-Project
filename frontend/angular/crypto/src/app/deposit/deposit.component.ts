@@ -19,17 +19,18 @@ export class DepositComponent {
 
   }
   deposit(){
-    console.log(this.dep.public_address);
-    console.log(this.dep.deposit_amount)
-    this.http.post('http://localhost:8080/transfer/deposit', this.dep,{responseType:"text"}).subscribe(
-      (response) => {
-        location.reload()
-
-      },
-      (error) => {
-        // Handle errors
-
-      }
-    );
+    if(Number(this.dep.deposit_amount) > 0){
+      this.http.post('http://localhost:8080/transfer/deposit', this.dep,{responseType:"text"}).subscribe(
+        (response) => {
+          alert(`Successfully added ${this.dep.deposit_amount} USDT to your account`);
+          location.reload()
+        },
+          (error) => {
+            alert("There was an error while taking your request! ");
+          }
+        );
+    }else {
+      alert("The deposit amount is invalid! The minimum deposit amount is 0.1 USDT");
+    }     
   }
 }
