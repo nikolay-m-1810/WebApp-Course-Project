@@ -12,5 +12,4 @@ userRouter.post("/user/register",makeUser)
 userRouter.delete("/user/:id",delUser)
 userRouter.put("/user/:id",updateUser)
 userRouter.post("/login",login)
-userRouter.get("/price/:crypto_name",getPrice)
-userRouter.get("/cryptos",getCryptos)
+

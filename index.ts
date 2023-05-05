@@ -3,12 +3,14 @@ import {Application, json, Request, Response} from "express";
 import {userRouter} from "./routers/Userrouter";
 const body_parser = require('body-parser')
 import cors from "cors";
+import {priceRouter} from "./routers/priceRouter";
 
 const app: Application = express();
 app.use(cors());
 
 app.use(json());//helps convert json
 app.use("/api",userRouter)//default rout is api
+app.use("/transfer",priceRouter)
 
 app.use(body_parser.json());
 app.use(body_parser.raw());

@@ -19,7 +19,7 @@ export class HomepageComponent implements OnInit{
 
 }
   getCryptos(){
-    this.http.get("http://localhost:8080/api/cryptos")
+    this.http.get("http://localhost:8080/transfer/cryptos")
       .subscribe((data:any)=>{
         this.cryptos = data
         console.log(this.cryptos)

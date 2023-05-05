@@ -59,15 +59,21 @@ export class UserModel{
 
     }
     async updateUser(id:number, user:UserData){
-        const userDataInput = Object.entries(user)
+        const userDataInput = Object.entries(user)//creates an array in which each element is the key and the value of
+        // the element in the class like so [[key:value],[key,value]]
         let parameters = "";
         let values = []
-        for(let i = 0; i<userDataInput.length; i++){
-            parameters+=`${userDataInput[i][0]} = ?`;
+        for(let i = 0; i<userDataInput.length; i++){//going through each key and value pair in the array
+            parameters+=`${userDataInput[i][0]} = ?`;// the string will hold each key, an equal element and question mark
+            // example username = ?
+            // this will hold the sql query
             parameters+= (i +1 != userDataInput.length) ? ", " : " ";
+            // if this is not the last element -> add a comma
             values.push(userDataInput[i][1]);
+            //this array hold the values
         }
-        values.push(id)
+        values.push(id)// at the end of the for loop we add the id to the valye array since the query
+        // will need the user id in the last place
         await this.conn.execute(`UPDATE users SET ${parameters} WHERE user_id = ?`,values);
     }
     async login(loginD:loginData){

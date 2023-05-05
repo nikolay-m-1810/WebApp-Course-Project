@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../services/authenication.service';
+import {Deposit} from "../interfaces/Deposit";
 
 @Component({
   selector: 'app-deposit',
@@ -8,27 +9,26 @@ import { AuthService } from '../services/authenication.service';
   styleUrls: ['./deposit.component.scss']
 })
 export class DepositComponent {
-  amount:number=0;
-  public_address:string='';
+  dep:Deposit = {} as Deposit
   constructor(private http:HttpClient,private authService: AuthService ){
     this.authService.currentUser$.subscribe(user => {
       if (user) {
-        this.public_address = user.public_address;
+        this.dep.public_address = user.public_address;
       }
     });
 
   }
   deposit(){
-    console.log(this.public_address);
-    console.log(this.amount)
-    this.http.post('/api/deposit', { public_address: this.public_address,amount: this.amount }).subscribe(
+    console.log(this.dep.public_address);
+    console.log(this.dep.deposit_amount)
+    this.http.post('http://localhost:8080/transfer/deposit', this.dep,{responseType:"text"}).subscribe(
       (response) => {
-        // Update the user's balance with the new amount returned by the backend
-        
+        location.reload()
+
       },
       (error) => {
         // Handle errors
-        
+
       }
     );
   }
