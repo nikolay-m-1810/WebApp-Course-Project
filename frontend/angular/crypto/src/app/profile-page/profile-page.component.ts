@@ -18,7 +18,7 @@ export interface Wallets {
 export class ProfilePageComponent implements OnInit {
   wallets:Wallets[]=[];
   public_address:string='';
-  total:number = 0;
+  total:number=0;
   constructor(public authService:AuthService,private http:HttpClient) {
 
   }
@@ -35,13 +35,12 @@ export class ProfilePageComponent implements OnInit {
       .subscribe((data:any)=>{
         this.wallets = data
         console.log(this.wallets);
-      for (const wallet of this.wallets) {
-        if (wallet.amount && wallet.value_usdt) { 
-          this.total += wallet.value_usdt * wallet.amount;
+        for (const wallet of this.wallets) {
+          if (wallet.amount && wallet.value_usdt) { 
+            this.total += wallet.value_usdt * wallet.amount;
+          }
         }
-      }
-
-      })
+      });
     }
 
   logout(): void {

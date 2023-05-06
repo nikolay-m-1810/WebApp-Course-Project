@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <div>
-  <form>
+  <div class="deposit-page">
+    <div class="deposit-header">
+      <h2>Deposit</h2>
+    </div>
+  <form class="deposit-form">
     <label>Deposit amount: </label>
     <input type="number"  id="amount" name="amount" [(ngModel)]="dep.deposit_amount" required>
     <button (click)="deposit()">Deposit</button>

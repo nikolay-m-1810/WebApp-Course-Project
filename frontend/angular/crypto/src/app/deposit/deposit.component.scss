@@ -1,0 +1,23 @@
+.deposit-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+  }
+  .deposit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .deposit-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .deposit-form{
+    display: flex;
+    margin: 40px 0;
+  }
