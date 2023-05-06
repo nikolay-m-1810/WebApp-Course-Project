@@ -38,20 +38,20 @@
         </div>
       </div>
 
-      <form  class="crypto-buy-sell">
+      <form  [formGroup]="buyForm" (ngSubmit)="buy()" class="crypto-buy-sell">
         <h3>Buy/Sell Crypto</h3>
         <div class="crypto-inputs">
           <div class="crypto-input">
             <label for="crypto-type">Crypto Type</label>
-            <select [(ngModel)]="crypto" id="crypto-type" name="crypto">
-              <option  value="BTC">Bitcoin</option>
-              <option  value="ETH">Ethereum</option>
-              <option  value="ADA">Cardano</option>
+            <select formControlName="crypto_name" id="crypto-type" name="crypto">
+              <option  value="BTC">BTC</option>
+              <option  value="ETH">ETH</option>
+              <option  value="ADA">ADA</option>
             </select>
           </div>
           <div class="crypto-input">
             <label for="crypto-amount">Crypto Amount</label>
-            <input id="crypto-amount" type="number" placeholder="Enter amount">
+            <input id="crypto-amount" type="number" formControlName="amount" placeholder="Enter amount">
           </div>
           <div class="crypto-input">
             <label for="fiat-type">Fiat Type</label>
@@ -61,13 +61,10 @@
               <option value="gbp">GBP</option>
             </select>
           </div>
-          <div class="crypto-input">
-            <label for="fiat-amount">Fiat Amount</label>
-            <input id="fiat-amount" type="number" placeholder="Enter amount">
-          </div>
+
         </div>
         <div class="crypto-button-container">
-          <button class="buy-button" (click)="buy()">Buy</button>
+          <button class="buy-button" type="submit">Buy</button>
           <button class="sell-button">Sell</button>
         </div>
       </form>
