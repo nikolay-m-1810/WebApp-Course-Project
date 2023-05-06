@@ -36,8 +36,8 @@ export class ProfilePageComponent implements OnInit {
         this.wallets = data
         console.log(this.wallets);
       for (const wallet of this.wallets) {
-        if (wallet.value_usdt) { 
-          this.total = wallet.value_usdt * wallet.amount;
+        if (wallet.amount && wallet.value_usdt) { 
+          this.total += wallet.value_usdt * wallet.amount;
         }
       }
 
