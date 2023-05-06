@@ -33,7 +33,7 @@ export const getWalletDetails= async(req:Request,res:Response)=>{
     
 export const buyOrder = async(req:Request,res:Response)=> {
     const inputData:OrderModel = req.body
-    const buy = await new PriceModell().buyOrder(inputData)
+    const buy:boolean = await new PriceModell().buyOrder(inputData)
     if(buy){
         res.send({
             "message":"Successful transaction",
@@ -43,6 +43,21 @@ export const buyOrder = async(req:Request,res:Response)=> {
     else{
         res.send({
             "message":"Not successful transaction",
+            "status":"failure"
+        })
+    }
+}
+export const sellOrder = async(req:Request, res:Response)=>{
+    const inputData:OrderModel = req.body;
+
+    const sell:boolean = await new PriceModell().sellOrder(inputData);
+    if(sell){
+        res.send({
+            "status":"success"
+        })
+    }
+    else{
+        res.send({
             "status":"failure"
         })
     }
