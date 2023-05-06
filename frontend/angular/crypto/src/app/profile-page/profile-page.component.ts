@@ -6,6 +6,8 @@ export interface Wallets {
   public_address:string;
   crypto_id:number;
   amount:number;
+  crypto_name:string;
+  value_usdt:number;
 }
 
 @Component({
@@ -16,6 +18,7 @@ export interface Wallets {
 export class ProfilePageComponent implements OnInit {
   wallets:Wallets[]=[];
   public_address:string='';
+  total:number = 0;
   constructor(public authService:AuthService,private http:HttpClient) {
 
   }
@@ -31,7 +34,13 @@ export class ProfilePageComponent implements OnInit {
     this.http.get<any>(`http://localhost:8080/transfer/getWallet?public_address=${public_address}`)
       .subscribe((data:any)=>{
         this.wallets = data
-        console.log(this.wallets)
+        console.log(this.wallets);
+      for (const wallet of this.wallets) {
+        if (wallet.value_usdt) { 
+          this.total = wallet.value_usdt * wallet.amount;
+        }
+      }
+
       })
     }
 

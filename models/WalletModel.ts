@@ -26,7 +26,7 @@ export class WalletModel extends UserModel{
         const [id] = await this.con.execute("SELECT usr_id FROM wallets WHERE ")
     }
     async getWalletDetails(public_address:string){
-        const [rows]=await this.con.execute("SELECT * FROM wallet_contents WHERE public_address = ?",[public_address])
+        const [rows]=await this.con.execute("SELECT * FROM wallet_contents JOIN prices ON wallet_contents.crypto_id = prices.crypto_id WHERE public_address = ?",[public_address])
         return rows;
     }
 }

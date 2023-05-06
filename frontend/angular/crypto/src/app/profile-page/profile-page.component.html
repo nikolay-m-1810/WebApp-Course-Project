@@ -8,30 +8,27 @@
       <div class="wallet-container">
         <h3>Your Wallet</h3>
         <div class="wallet-info">
-          <p>Balance: </p>
+          <p>Balance: {{total}} $</p>
           <p>Address: {{ (authService.currentUser$ | async)?.public_address }} </p>
         </div>
         <button class="send-button" routerLink="/trading">Send Crypto</button>
       </div>
       <div class="trade-container">
-        <h3>Trade History</h3>
+        <h3>Wallet</h3>
         <table>
           <thead>
             <tr>
-              <th>Crypto ID</th>
+              <th>Crypto</th>
               <th>Amount</th>
-              <th>Amount</th>
-              <th>Price</th>
+              <th>Price for 1 </th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let wallet of wallets">
-              <td>{{wallet.crypto_id}}</td>
+              <td>{{wallet.crypto_name}}</td>
               <td>{{wallet.amount}}</td>
-              <td>Amount</td>
-              <td>Price</td>
+              <td>{{wallet.value_usdt}}$</td>
             </tr>
-            <!-- Repeat this row for each trade in history -->
           </tbody>
         </table>
       </div>
