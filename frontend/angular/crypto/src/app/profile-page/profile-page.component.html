@@ -18,16 +18,16 @@
         <table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Coin</th>
+              <th>Crypto ID</th>
+              <th>Amount</th>
               <th>Amount</th>
               <th>Price</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Date</td>
-              <td>Coin</td>
+            <tr *ngFor="let wallet of wallets">
+              <td>{{wallet.crypto_id}}</td>
+              <td>{{wallet.amount}}</td>
               <td>Amount</td>
               <td>Price</td>
             </tr>
