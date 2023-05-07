@@ -1,76 +1,50 @@
+<body>
+
+
 <app-navbar></app-navbar>
-<div class="crypto-trading-page">
-    <div class="crypto-header">
-      <h2>Trade Crypto</h2>
+
+<div class="crypto-container">
+
+
+  <form [formGroup]="orderForm" (ngSubmit)="submitOrder()" class="crypto-buy-sell">
+    <h3 class="crypto-header">{{ selectedOrder }} Crypto</h3>
+
+    <div class="form-group">
+      <label for="crypto-type">Crypto Type</label>
+      <select formControlName="crypto_name" id="crypto-type" name="crypto" class="form-control">
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="ADA">ADA</option>
+      </select>
     </div>
 
-    <div class="crypto-trading-body">
-      <div class="crypto-market-info">
-        <div class="crypto-market-stats">
-          <div class="crypto-market-stat">
-            <h3>Bitcoin</h3>
-            <p class="crypto-price">$55,000.00</p>
-            <p class="crypto-percent-change positive">+5.00%</p>
-          </div>
-          <div class="crypto-market-stat">
-            <h3>Ethereum</h3>
-            <p class="crypto-price">$3,200.00</p>
-            <p class="crypto-percent-change negative">-2.50%</p>
-          </div>
-          <div class="crypto-market-stat">
-            <h3>Cardano</h3>
-            <p class="crypto-price"></p>
-            <p class="crypto-percent-change positive">+7.20%</p>
-          </div>
-        </div>
-        <div class="crypto-market-charts">
-          <h3>Market Charts</h3>
-          <div class="crypto-chart">
-            <img src="assets/images/bitcoin-chart.png" alt="Bitcoin Chart">
-          </div>
-          <div class="crypto-chart">
-            <img src="assets/images/ethereum-chart.png" alt="Ethereum Chart">
-          </div>
-          <div class="crypto-chart">
-            <img src="assets/images/litecoin-chart.png" alt="Litecoin Chart">
-          </div>
-        </div>
-      </div>
-
-      <form  [formGroup]="orderForm" (ngSubmit)="submitOrder()" class="crypto-buy-sell">
-        <h3>{{ selectedOrder }} Crypto</h3>
-        <div class="crypto-inputs">
-          <div class="crypto-input">
-            <label for="crypto-type">Crypto Type</label>
-            <select formControlName="crypto_name" id="crypto-type" name="crypto">
-              <option  value="BTC">BTC</option>
-              <option  value="ETH">ETH</option>
-              <option  value="ADA">ADA</option>
-            </select>
-          </div>
-          <div class="crypto-input">
-            <label for="crypto-amount">Crypto Amount</label>
-            <input id="crypto-amount" type="number" formControlName="amount" placeholder="Enter amount">
-          </div>
-          <div class="crypto-input">
-            <label for="fiat-type">Fiat Type : USD</label>
-            <select id="fiat-type">
-              <option value="usd">USD</option>
-            </select>
-          </div>
-          <div>
-            <label>Choose order</label>
-            <select formControlName="operation">
-              <option value="buy">Buy order</option>
-              <option value="sell">Sell order</option>
-            </select>
-          </div>
-
-        </div>
-        <div class="crypto-button-container">
-          <button class="buy-button" type="submit">Order</button>
-        </div>
-      </form>
+    <div class="form-group">
+      <label for="crypto-amount">Crypto Amount</label>
+      <input id="crypto-amount" type="number" formControlName="amount" placeholder="Enter amount" class="form-control">
     </div>
-  </div>
-  <ul></ul>
+
+    <div class="form-group">
+      <label for="fiat-type">Fiat Type : USD</label>
+      <select id="fiat-type" class="form-control">
+        <option value="usd">USD</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Choose order</label>
+      <select formControlName="operation" class="form-control">
+        <option value="buy">Buy order</option>
+        <option value="sell">Sell order</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button class="order-button" type="submit">Order</button>
+    </div>
+  </form>
+</div>
+
+<ul></ul>
+
+  
+</body>

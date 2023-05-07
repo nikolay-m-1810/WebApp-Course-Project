@@ -1,9 +1,13 @@
+
+
+
 .profile-container {
-    background-color: #f8f8f8;
+  background-color: #E7E7E7;
     border-radius: 1rem;
     margin: 2rem auto;
     max-width: 800px;
     padding: 2rem;
+
   }
   
   .profile-header {
@@ -46,7 +50,7 @@
   }
   
   .send-button {
-    background-color: #61dafb;
+    background-color: orange;
     border: none;
     border-radius: 0.5rem;
     color: white;
@@ -57,7 +61,7 @@
   }
   
   .send-button:hover {
-    background-color: #22a6b3;
+    background-color: #DE8B4D;
   }
   
   table {
