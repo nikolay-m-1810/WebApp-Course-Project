@@ -3,16 +3,17 @@
 <div class="profile-container">
     <div  class="profile-header">
       <h2>Welcome Back, {{ (authService.currentUser$ | async)?.username }}</h2>
+      <a (click)="deleteUser(public_address)" class="user-link">Delete Account</a>
       <a href="" (click)="logout()" class="logout-link">Log Out</a>
     </div>
     <div class="profile-body">
       <div class="wallet-container">
         <h3>Your Wallet</h3>
         <div class="wallet-info">
-          <p>Balance: {{total | number: '1.2-2'}} $</p>
+          <p>Balance: {{total | number: '1.2-2'}} $ <button class="send-button" routerLink="/deposit">Deposit</button></p>
           <p>Address: {{ (authService.currentUser$ | async)?.public_address }} </p>
         </div>
-        <button class="send-button" routerLink="/trading">Send Crypto</button>
+        <button class="send-button" routerLink="/trading">Trade Crypto Now!</button>
       </div>
       <div class="trade-container">
         <h3>Owned cryptocurrencies</h3>

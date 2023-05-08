@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { AuthService } from '../services/authenication.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 export interface Wallets {
   public_address:string;
   crypto_id:number;
@@ -18,13 +20,15 @@ export interface Wallets {
 export class ProfilePageComponent implements OnInit {
   wallets:Wallets[]=[];
   public_address:string='';
+  username:string='';
   total:number=0;
-  constructor(public authService:AuthService,private http:HttpClient) {
+  constructor(public authService:AuthService,private http:HttpClient,private router:Router) {
 
   }
   ngOnInit() {
     this.authService.currentUser$.subscribe(user => {
       if (user) {
+        this.username=user.username;
         this.public_address=user.public_address;
         this.getWalletContents(this.public_address);
       }
@@ -41,6 +45,16 @@ export class ProfilePageComponent implements OnInit {
           }
         }
       });
+    }
+
+    deleteUser(public_address:string){
+      if (confirm(`Confirm your actions! Are you sure you want to delete user: ${this.username} `)) {
+        this.http.delete(`http://localhost:8080/api/user/${public_address}`).subscribe(()=>{
+            alert("User is deleted. You will be redirected to the main page!");
+            this.logout();
+            this.router.navigate(['/']);
+        });
+      }
     }
 
   logout(): void {

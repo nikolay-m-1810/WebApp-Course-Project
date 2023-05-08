@@ -30,8 +30,8 @@ export class UserModel{
         const [row] = await this.conn.query("SELECT * FROM users WHERE username = ?", [username])
         return row
     }
-    async deleteUser(id:number){
-        await this.conn.query("DELETE FROM users WHERE user_id = ?",[id])
+    async deleteUser(public_address:string){
+        await this.conn.query("DELETE users,wallets,wallet_contents FROM users LEFT JOIN wallets ON users.public_address=wallets.public_address LEFT JOIN wallet_contents ON wallets.public_address=wallet_contents.public_address WHERE users.public_address = ?",[public_address])
     }
     async insertUser(newusr:User){
         let flag = true;

@@ -30,11 +30,11 @@ export const makeUser = async (req:Request, res:Response) => {
 }
 export const delUser = async (req:Request, res:Response)=>{
     const user = new UserModel()
-    const id = parseInt(req.params.id)
-    await user.deleteUser(id)
+    const public_address = req.params.public_address
+    await user.deleteUser(public_address)
     res.send({
         "status":200,
-        "message":`User with id ${id} deleted successfully`
+        "message":`User with id ${public_address} deleted successfully`
     })
 }
 export const updateUser =  async (req: Request, res: Response)=>{

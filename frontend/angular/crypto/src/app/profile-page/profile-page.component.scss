@@ -21,10 +21,12 @@
     font-size: 2rem;
   }
   
-  .logout-link {
+  .logout-link,
+  .user-link {
     color: #ff2e2e;
     font-size: 1.2rem;
     text-decoration: none;
+    cursor: pointer;
   }
   
   .wallet-container,

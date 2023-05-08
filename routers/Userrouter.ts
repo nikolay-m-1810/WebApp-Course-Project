@@ -9,7 +9,7 @@ userRouter.get("/",welcomeMsg);
 
 userRouter.get("/user/:username", getUser)
 userRouter.post("/user/register",makeUser)
-userRouter.delete("/user/:id",delUser)
+userRouter.delete("/user/:public_address",delUser)
 userRouter.put("/user/:id",updateUser)
 userRouter.post("/login",login)
 
