@@ -7,14 +7,15 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { TradingComponent } from './trading/trading.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   {path: "",component: HomepageComponent},
   {path: "login",component: LoginComponent},
   {path: "registration", component: RegistrationComponent},
-  {path: "profile", component: ProfilePageComponent},
-  {path: "trading", component: TradingComponent},
-  {path: "deposit", component: DepositComponent},
+  {path: "profile", component: ProfilePageComponent,canActivate:[AuthGuardGuard]},
+  {path: "trading", component: TradingComponent,canActivate:[AuthGuardGuard]},
+  {path: "deposit", component: DepositComponent,canActivate:[AuthGuardGuard]},
   {path: "**", component: NotfoundComponent},
   
   
@@ -22,6 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers:[AuthGuardGuard] 
 })
 export class AppRoutingModule { }
