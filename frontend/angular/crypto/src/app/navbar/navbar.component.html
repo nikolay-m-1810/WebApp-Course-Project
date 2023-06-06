@@ -8,11 +8,14 @@
         <a href="#">About Us</a>
       </div>
       <div class="navbar-right">
-        <button  class="btn-login" *ngIf="!(authService.currentUser$ | async)"  routerLink="/login">Log In</button>
+        <button class="btn-login" *ngIf="!(authService.currentUser$ | async)" routerLink="/login">Log In</button>
         <button *ngIf="!(authService.currentUser$ | async)" class="btn-register" routerLink="/registration">Register</button>
-        <span *ngIf="(authService.currentUser$ | async) as currentUser" class="welcome">Welcome: <a routerLink="/profile">{{ (authService.currentUser$ | async)?.username }}</a></span>
+        <span *ngIf="(authService.currentUser$ | async) as currentUser" class="welcome">Welcome:
+          <a routerLink="/profile">{{ currentUser?.username }}</a>
+        </span>
         <button class="btn-logout" (click)="logout()" *ngIf="(authService.currentUser$ | async) as currentUser">Logout</button>
-      </div>
+      </div>      
+
     </div>
   </div>
 </nav>

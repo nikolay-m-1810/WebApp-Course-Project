@@ -9,3 +9,9 @@ export class loginData {
     username:string;
     password:string;
 }
+
+export class updateUser{
+    username?:string;
+    password?:string;
+    email?:string;
+}

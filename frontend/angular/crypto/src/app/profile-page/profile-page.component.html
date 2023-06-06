@@ -36,4 +36,17 @@
       </div>
     </div>
   </div>
+  <form  [formGroup]="updateForm" (ngSubmit)="updateUser()">
+    <label>Username: </label>
+    <input type="text" formControlName="username" name="username">
+    <br>
+    <label>Password: </label>
+    <input type="password" formControlName="password" name="password">
+    <br>
+    <label>Email: </label>
+    <input type="email" formControlName="email" name="email">
+    <br>
+    <button type="submit">Submit</button>
+
+  </form >
 </body>

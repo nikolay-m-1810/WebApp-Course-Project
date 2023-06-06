@@ -38,12 +38,12 @@ export const delUser = async (req:Request, res:Response)=>{
     })
 }
 export const updateUser =  async (req: Request, res: Response)=>{
-    const id = parseInt(req.params.id)
+    const public_address = req.params.public_address
     let updatedUsr:UserData = req.body
-    const update = await new UserModel().updateUser(id,updatedUsr)
+    const update = await new UserModel().updateUser(public_address,updatedUsr)
     res.send({
         "status" : 200,
-        "message": `Successfully updated user with id ${id}`
+        "message": `Successfully updated user with id ${public_address}`
     })
 }
 export const login = async(req:Request, res:Response) => {

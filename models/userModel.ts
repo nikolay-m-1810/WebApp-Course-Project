@@ -1,6 +1,6 @@
 import {DB} from "../core/db";
 import {log} from "util";
-import {UserData,loginData} from "./userDataModel";
+import {UserData,loginData,updateUser} from "./userDataModel";
 import * as crypto from "crypto";
 import {login} from "../controllers/userController";
 export class User{
@@ -58,7 +58,7 @@ export class UserModel{
 
 
     }
-    async updateUser(id:number, user:UserData){
+    async updateUser(public_address:string, user:UserData){
         const userDataInput = Object.entries(user)//creates an array in which each element is the key and the value of
         // the element in the class like so [[key:value],[key,value]]
         let parameters = "";
@@ -72,10 +72,11 @@ export class UserModel{
             values.push(userDataInput[i][1]);
             //this array hold the values
         }
-        values.push(id)// at the end of the for loop we add the id to the valye array since the query
+        values.push(public_address)// at the end of the for loop we add the id to the valye array since the query
         // will need the user id in the last place
-        await this.conn.execute(`UPDATE users SET ${parameters} WHERE user_id = ?`,values);
+        await this.conn.execute(`UPDATE users SET ${parameters} WHERE public_address = ?`,values);
     }
+           
     async login(loginD:loginData){
         const loginCredentials = [
             loginD.username,

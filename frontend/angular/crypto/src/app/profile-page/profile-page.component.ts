@@ -3,6 +3,7 @@ import { AuthService } from '../services/authenication.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { FormBuilder,FormControl,FormGroup } from '@angular/forms';
 
 export interface Wallets {
   public_address:string;
@@ -22,9 +23,15 @@ export class ProfilePageComponent implements OnInit {
   public_address:string='';
   username:string='';
   total:number=0;
-  constructor(public authService:AuthService,private http:HttpClient,private router:Router) {
-
+  updateForm:FormGroup
+  constructor(public authService:AuthService,private http:HttpClient,private router:Router,private formBuilder:FormBuilder,) {
+    this.updateForm = this.formBuilder.group( {
+      username:new FormControl(''),
+      password:new FormControl(''),
+      email:new FormControl('')
+    })
   }
+  
   ngOnInit() {
     this.authService.currentUser$.subscribe(user => {
       if (user) {
@@ -56,6 +63,23 @@ export class ProfilePageComponent implements OnInit {
         });
       }
     }
+    updateUser() {
+      const { username, password, email } = this.updateForm.value;
+      const currentUser = this.authService.currentUserSubject.getValue();
+      const requestBody = {
+        username: (username !== '') ? username : currentUser?.username,
+        password: (password !== '') ? password : undefined,
+        email: (email !== '') ? email : undefined
+      };
+      const public_address = encodeURIComponent(this.public_address); 
+    
+      this.http.put(`http://localhost:8080/api/user/update/${public_address}`, requestBody, { responseType: 'text' })
+        .subscribe(() => {
+          location.reload();
+          this.authService.updateUsername(requestBody.username);
+        });
+    }
+    
 
   logout(): void {
     this.authService.logout();
