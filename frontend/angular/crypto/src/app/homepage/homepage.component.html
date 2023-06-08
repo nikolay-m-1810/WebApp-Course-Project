@@ -82,7 +82,7 @@
       <div class="row align-items-center">
         <div class="column-left">
           <h2>Security and Privacy</h2>
-          <p class="lead">At Kiopek Trader, we take your security and privacy seriously. We know that your personal and financial information is important to you, and we work hard to protect it.</p>
+          <p class="lead">We take your security and privacy seriously. We know that your personal and financial information is important to you, and we work hard to protect it.</p>
           <p>We use the latest encryption technology to ensure that your data is protected both at rest and in transit. Our platform features multi-factor authentication to prevent unauthorized access, and our systems are constantly monitored for potential security threats.</p>
           
           <div class="call-to-action">
@@ -103,12 +103,27 @@
   
   
 
-<ul *ngFor="let crypto of cryptos">
-  <li>{{ crypto.crypto_name }} : {{ crypto.value_usdt }} US</li>
-</ul>
-
-
-
-
+<div class="crypto-table-container">
+  <table class="crypto-table">
+    <thead>
+      <tr>
+        <th>Cryptocurrency</th>
+        <th>Value (USDT)</th>
+        <th>Trade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let crypto of cryptos">
+        <td>
+          <div class="crypto-name">{{ crypto.crypto_name }}</div>
+        </td>
+        <td class="crypto-value">{{ crypto.value_usdt }} US</td>
+        <td>
+          <button class="trade-button">Trade</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <app-footer></app-footer>

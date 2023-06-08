@@ -1,6 +1,4 @@
 
-
-
 .profile-container {
   background-color: #E7E7E7;
     border-radius: 1rem;
@@ -83,3 +81,40 @@
     background-color: #f8f8f8;
   }
   
+  form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  form button{
+    color: #fff;
+    background-color: orange;
+    border-radius: 4px;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #DE8B4D;
+  }

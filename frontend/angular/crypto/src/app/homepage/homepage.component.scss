@@ -274,4 +274,52 @@
         padding: 20px 40px;
       }
     }
+
+
+
+    .crypto-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 10px auto;
+      max-width: 600px;
+    }
+    
+    .crypto-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .crypto-table thead th {
+      background-color: #f2f2f2;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    .crypto-table tbody td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .crypto-name {
+      font-weight: bold;
+    }
+    
+    .crypto-value {
+      font-family: monospace;
+    }
+    
+    .trade-button {
+      color: #fff;
+      background-color: orange;
+      border-radius: 0.3em;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    
+    .trade-button:hover {
+      background-color: #DE8B4D;
+    }
     
