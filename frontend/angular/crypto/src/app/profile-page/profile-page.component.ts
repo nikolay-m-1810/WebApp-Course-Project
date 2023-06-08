@@ -66,12 +66,12 @@ export class ProfilePageComponent implements OnInit {
     updateUser() {
       const { username, password, email } = this.updateForm.value;
       const currentUser = this.authService.currentUserSubject.getValue();
+      const public_address = this.public_address; 
       const requestBody = {
         username: (username !== '') ? username : currentUser?.username,
         password: (password !== '') ? password : undefined,
         email: (email !== '') ? email : undefined
       };
-      const public_address = encodeURIComponent(this.public_address); 
     
       this.http.put(`http://localhost:8080/api/user/update/${public_address}`, requestBody, { responseType: 'text' })
         .subscribe(() => {

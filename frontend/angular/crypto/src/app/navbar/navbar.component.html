@@ -3,8 +3,8 @@
     <div class="navbar">
       <div class="navbar-left">
         <a routerLink="/"><img class="logo" src="http://localhost:4200/assets/logo.png" height="64px" width="64px"></a>
-        <a routerLink="{{authService.isLoggedIn() ? '/trading' : '/login' }}">Trade</a>
-        <a routerLink="{{authService.isLoggedIn() ? '/deposit' : '/login' }}">Deposit</a>
+        <a routerLink="/trading">Trade</a>
+        <a routerLink="/deposit">Deposit</a>
       </div>
       <div class="navbar-right">
         <button class="btn-login" *ngIf="!(authService.currentUser$ | async)" routerLink="/login">Log In</button>
