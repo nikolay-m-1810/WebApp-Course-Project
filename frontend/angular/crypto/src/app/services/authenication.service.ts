@@ -18,8 +18,7 @@ export class AuthService {
   }
 
   public login(username: string): void {
-    // Check the username and password against the database
-    // If they match, set the current user in local storage and emit it through the currentUser$ observable
+    // Check the username and password in the db
     localStorage.setItem('currentUser', JSON.stringify({ username: username, public_address: '' }));
     this.currentUserSubject.next({ username: username, public_address: '' });
     this.http.get<any>('http://localhost:8080/api/user/' + username).subscribe(response => {
