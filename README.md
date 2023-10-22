@@ -40,6 +40,6 @@ Please note that the project is not entirely finished and it is designed for loc
 
 This project is a collaborative effort by university students:
 
-    Your Name: https://github.com/nikolay-m-1810
-    Team Member 1: https://github.com/Ma4kaigrisho
-    Team Member 2: https://github.com/Rado236
+    Team Member 1 https://github.com/nikolay-m-1810
+    Team Member 2: https://github.com/Ma4kaigrisho
+    Team Member 3: https://github.com/Rado236
